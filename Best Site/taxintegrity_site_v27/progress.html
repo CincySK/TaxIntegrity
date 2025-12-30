@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaxIntegrity — Progress</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Home"><img class="brand__logo brand__logo--wide" src="logo.png" alt="TaxIntegrity logo" /></a>
+      </div>
+      <nav class="nav__links">
+        <a class="nav__link" href="audits.html">Tax Audits</a>
+        <a class="nav__link" href="evasion.html">Evasion</a>
+        <a class="nav__link" href="progress.html">Progress</a>
+        <a class="nav__link" href="sources.html">Sources</a>
+        <a class="nav__link nav__link--getstarted" href="get-started.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    
+<div class="hero__top">
+  <h1>Progress</h1>
+  <p class="hero__tagline muted">Demonstration metrics that scale with AI adoption (synthetic).</p>
+</div>
+
+<article class="panel" style="margin-top:14px;">
+  <div class="panel__header">
+    <h2>Real-world IRS AI usage (public reporting)</h2>
+    <p class="muted">
+      Public watchdog reporting shows the IRS is actively developing and using AI across internal operations and taxpayer-facing tools.
+      In a 2024 TIGTA evaluation, the IRS reported an inventory of <b>68 AI projects</b>, with <b>30</b> in implementation/operational status and <b>38</b> in initiation/development/acquisition.
+    </p>
+  </div>
+  <div class="progress__grid">
+    <div class="progresscard">
+      <div class="progresscard__label">IRS AI projects (inventory)</div>
+      <div class="progresscard__value">68</div>
+      <div class="progresscard__sub">Reported in TIGTA evaluation</div>
+    </div>
+    <div class="progresscard">
+      <div class="progresscard__label">Operational / implemented</div>
+      <div class="progresscard__value">30</div>
+      <div class="progresscard__sub">Deployed & serving intended purpose</div>
+    </div>
+    <div class="progresscard">
+      <div class="progresscard__label">In development</div>
+      <div class="progresscard__value">38</div>
+      <div class="progresscard__sub">Initiation + development/acquisition</div>
+    </div>
+  </div>
+  <div class="muted small" style="margin-top:10px;">
+    This page still uses synthetic demo metrics below—but the “AI adoption” idea matches real modernization work reported publicly.
+  </div>
+  <div class="muted small" style="margin-top:6px;">
+    Source: Treasury Inspector General for Tax Administration (TIGTA), report issued Nov 12, 2024 (2025‑IE‑R003).
+  </div>
+</article>
+
+<section class="progress" id="progress">
+        <h3 data-edit="progress.heading">AI Progress in Fighting Tax Evasion</h3>
+
+        <div class="progress__grid">
+          <div class="progresscard">
+            <div class="progresscard__label" data-edit="progress.p1.label">Hidden Income Detected</div>
+            <div class="meter">
+              <div class="meter__track"><div class="meter__fill meter__fill--green" id="p_income"></div></div>
+              <div class="meter__value" id="p_income_txt">—</div>
+            </div>
+            <div class="muted small" id="p_income_sub">—</div>
+          </div>
+
+          <div class="progresscard">
+            <div class="progresscard__label" data-edit="progress.p2.label">Offshore Accounts Found</div>
+            <div class="meter">
+              <div class="meter__track"><div class="meter__fill meter__fill--amber" id="p_offshore"></div></div>
+              <div class="meter__value" id="p_offshore_txt">—</div>
+            </div>
+            <div class="muted small" id="p_offshore_sub">—</div>
+          </div>
+
+          <div class="progresscard">
+            <div class="progresscard__label" data-edit="progress.p3.label">Fraud Schemes Uncovered</div>
+            <div class="meter">
+              <div class="meter__track"><div class="meter__fill meter__fill--orange" id="p_fraud"></div></div>
+              <div class="meter__value" id="p_fraud_txt">—</div>
+            </div>
+            <div class="muted small" id="p_fraud_sub">—</div>
+          </div>
+        </div>
+
+        <div class="actionrow" id="get-started">
+          <button class="btn btn--primary" data-action="simulate" type="button">Run Impact Simulation</button>
+          <button class="btn" data-action="export" type="button">Export Demo Report (JSON)</button>
+
+          <div class="slider">
+            <div class="slider__label">AI adoption level</div>
+            <input id="adoption" type="range" min="0" max="100" value="35" />
+            <div class="slider__value" id="adoption_val">35</div>
+          </div>
+        </div>
+
+        <div class="result" id="result">
+          <div class="result__title">Simulation Output</div>
+          <pre class="result__box" id="result_box">Click “Run Impact Simulation”.</pre>
+        </div>
+      </section>
+
+    <footer class="footer">
+      <div class="muted small">
+        Educational prototype. Uses synthetic metrics. For real deployments: privacy controls, access logs, and human review.
+      </div>
+      <div class="muted small">
+        Edit-friendly build: click ✏️ Edit to change labeled text (saved locally in your browser).
+      </div>
+    </footer>
+  </div>
+</section>
+
+<!-- In-page Edit Mode UI -->
+  <button id="edit_toggle" class="editfab" type="button" aria-label="Toggle edit mode" title="Toggle edit mode">
+    ✏️ Edit
+  </button>
+
+  <aside id="edit_drawer" class="editdrawer" aria-hidden="true">
+    <div class="editdrawer__header">
+      <div class="editdrawer__title">Edit Mode</div>
+      <button id="edit_close" class="editdrawer__close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="editdrawer__body">
+      <div class="edittip">
+        Click any text with a dotted underline to edit it.<br/>
+        Changes save in your browser (localStorage).
+      </div>
+
+      <div class="editrow">
+        <button id="edit_export" class="btn btn--primary" type="button">Export Settings (JSON)</button>
+        <label class="btn" style="cursor:pointer;">
+          Import Settings
+          <input id="edit_import" type="file" accept="application/json" style="display:none;">
+        </label>
+      </div>
+
+      <div class="editrow">
+        <button id="edit_reset" class="btn" type="button">Reset to Default</button>
+        <button id="edit_copy" class="btn" type="button">Copy Settings to Clipboard</button>
+      </div>
+
+      <div class="editbox">
+        <div class="small muted">Live settings (read-only view)</div>
+        <pre id="edit_json" class="editjson">{}</pre>
+      </div>
+
+      <div class="small muted">
+        Pro tip: After you export JSON, you can paste it back to me and I’ll apply bigger design changes.
+      </div>
+    </div>
+  </aside>
+<script src="site_config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

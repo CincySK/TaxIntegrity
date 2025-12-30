@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaxIntegrity — Tax Audits</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Home"><img class="brand__logo brand__logo--wide" src="logo.png" alt="TaxIntegrity logo" /></a>
+      </div>
+      <nav class="nav__links">
+        <a class="nav__link" href="audits.html">Tax Audits</a>
+        <a class="nav__link" href="evasion.html">Evasion</a>
+        <a class="nav__link" href="progress.html">Progress</a>
+        <a class="nav__link" href="sources.html">Sources</a>
+        <a class="nav__link nav__link--getstarted" href="get-started.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    
+<div class="hero__top">
+  <h1>Tax Audits</h1>
+  <p class="hero__tagline muted">AI-assisted audit triage, document verification, and explainable risk scoring (demo).</p>
+</div>
+
+<article class="panel" style="margin-top:14px;">
+  <div class="panel__header">
+    <h2>How AI speeds up tax audits (demo)</h2>
+    <p class="muted">
+      In real life, audits take time because returns must be selected, reviewed, and validated. Responsible AI can speed up the early steps
+      by prioritizing cases, auto-organizing documents, and surfacing explainable “risk signals” for human reviewers.
+    </p>
+  </div>
+  <div class="checkrow">
+    <div class="check"><span class="check__dot">✓</span><span><b>Triage faster:</b> score & route cases to the right team</span></div>
+    <div class="check"><span class="check__dot">✓</span><span><b>Document assist:</b> extract key fields and flag missing items</span></div>
+    <div class="check"><span class="check__dot">✓</span><span><b>Explainable drivers:</b> show why a case is prioritized</span></div>
+  </div>
+  <div class="muted small" style="margin-top:10px;">
+    Evidence (public sources): The IRS says it is using <b>AI and advanced analytics</b> to help select complex partnerships for audits (IRA Strategic Operating Plan update, Apr 2024).
+    GAO notes AI models are already used for audit sampling and for identifying returns more likely to have errors and owe additional tax (GAO blog, Jun 2024).
+  </div>
+  <div class="muted small" style="margin-top:6px;">
+    Sources: IRS Publication 3744-B (May 2024 update); U.S. GAO blog (Jun 2024); IRS Compliance Presence / Data Book FY 2024.
+  </div>
+</article>
+
+<article class="panel" style="margin-top:14px;">
+  <div class="panel__header">
+    <h2>Before vs After (real baseline + demo uplift)</h2>
+    <p class="muted">
+      <b>Before</b> uses real published FY 2024 IRS examination outcomes. <b>After</b> is an illustrative scenario showing how AI-assisted triage and
+      document automation could increase throughput and yield—while keeping humans in control.
+    </p>
+  </div>
+
+  <div class="compare">
+    <div class="compare__col">
+      <div class="compare__title">Before (FY 2024 actual)</div>
+      <div class="compare__kpi">
+        <div class="compare__k">Audits closed</div>
+        <div class="compare__v">505,514</div>
+      </div>
+      <div class="compare__kpi">
+        <div class="compare__k">Recommended additional tax</div>
+        <div class="compare__v">$29.0B</div>
+      </div>
+      <div class="compare__kpi">
+        <div class="compare__k">Exam rate (individual, TY 2014–2022)</div>
+        <div class="compare__v">0.40%</div>
+      </div>
+    </div>
+
+    <div class="compare__col">
+      <div class="compare__title">After (illustrative AI scenario)</div>
+      <div class="compare__kpi">
+        <div class="compare__k">Audits closed</div>
+        <div class="compare__v">606,617 <span class="badge">+20%</span></div>
+      </div>
+      <div class="compare__kpi">
+        <div class="compare__k">Recommended additional tax</div>
+        <div class="compare__v">$31.9B <span class="badge">+10%</span></div>
+      </div>
+      <div class="compare__kpi">
+        <div class="compare__k">What changed</div>
+        <div class="muted small">Faster triage + better selection + automated document checks (human-reviewed).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="muted small" style="margin-top:10px;">
+    Sources for FY 2024 baseline: IRS “Compliance presence” and IRS Data Book (FY 2024). The “After” column is a demo scenario, not an official forecast.
+  </div>
+</article>
+
+
+<div class="hero__panels">
+  <article class="panel" id="audit">
+          <div class="panel__header">
+            <h2 data-edit="audit.heading">AI‑Powered Tax Audit Assistance</h2>
+            <p class="muted" data-edit="audit.subheading">Streamline Your Tax Audit Process with AI</p>
+          </div>
+
+          <div class="chiprow" role="group" aria-label="Audit tools">
+            <button class="chip" data-action="audit_auto" type="button" data-edit="audit.btn1">Automated Audit Analysis</button>
+            <button class="chip" data-action="audit_docs" type="button" data-edit="audit.btn2">Document Verification</button>
+            <button class="chip" data-action="audit_risk" type="button" data-edit="audit.btn3">Risk Scoring</button>
+          </div>
+
+          <div class="panel__body">
+            <div class="mock">
+              <div class="mock__screen">
+                <div class="mock__title">Audit Assistant</div>
+                <div class="mock__kpis">
+                  <div class="mock__kpi"><span class="k">Audits closed (FY 2024)</span><span class="v" id="k_triaged">505,514</span></div>
+                  <div class="mock__kpi"><span class="k">Recommended additional tax (FY 2024)</span><span class="v" id="k_highrisk">$29.0B</span></div>
+                  <div class="mock__kpi"><span class="k">Exam rate (TY 2014–2022)</span><span class="v" id="k_timesaved">0.40%</span></div>
+                </div>
+                <div class="mock__bars">
+                  <div class="bar">
+                    <div class="bar__label">Explainability</div>
+                    <div class="bar__track"><div class="bar__fill" id="b_explain"></div></div>
+                  </div>
+                  <div class="bar">
+                    <div class="bar__label">False‑positive control</div>
+                    <div class="bar__track"><div class="bar__fill" id="b_fp"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mock__note muted">
+                Demo only: no real taxpayer identities. Human review required.
+              </div>
+            </div>
+
+            <div class="checkrow">
+              <div class="check"><span class="check__dot">✓</span><span data-edit="audit.check1">Identify Errors</span></div>
+              <div class="check"><span class="check__dot">✓</span><span data-edit="audit.check2">Detect Anomalies</span></div>
+              <div class="check"><span class="check__dot">✓</span><span data-edit="audit.check3">Provide Insights</span></div>
+            </div>
+          </div>
+        </article>
+  <article class="panel">
+    <div class="panel__header">
+      <h2>Executive Summary</h2>
+      <p class="muted">Increase audit effectiveness by prioritizing the highest-yield cases while protecting fairness, privacy, and due process.</p>
+    </div>
+    <div class="checkrow">
+      <div class="check"><span class="check__dot">✓</span><span>Transparent drivers</span></div>
+      <div class="check"><span class="check__dot">✓</span><span>Human review required</span></div>
+      <div class="check"><span class="check__dot">✓</span><span>Audit logs & access controls</span></div>
+    </div>
+  </article>
+</div>
+
+    <footer class="footer">
+      <div class="muted small">
+        Educational prototype. Uses synthetic metrics. For real deployments: privacy controls, access logs, and human review.
+      </div>
+      <div class="muted small">
+        Edit-friendly build: click ✏️ Edit to change labeled text (saved locally in your browser).
+      </div>
+    </footer>
+  </div>
+</section>
+
+<!-- In-page Edit Mode UI -->
+  <button id="edit_toggle" class="editfab" type="button" aria-label="Toggle edit mode" title="Toggle edit mode">
+    ✏️ Edit
+  </button>
+
+  <aside id="edit_drawer" class="editdrawer" aria-hidden="true">
+    <div class="editdrawer__header">
+      <div class="editdrawer__title">Edit Mode</div>
+      <button id="edit_close" class="editdrawer__close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="editdrawer__body">
+      <div class="edittip">
+        Click any text with a dotted underline to edit it.<br/>
+        Changes save in your browser (localStorage).
+      </div>
+
+      <div class="editrow">
+        <button id="edit_export" class="btn btn--primary" type="button">Export Settings (JSON)</button>
+        <label class="btn" style="cursor:pointer;">
+          Import Settings
+          <input id="edit_import" type="file" accept="application/json" style="display:none;">
+        </label>
+      </div>
+
+      <div class="editrow">
+        <button id="edit_reset" class="btn" type="button">Reset to Default</button>
+        <button id="edit_copy" class="btn" type="button">Copy Settings to Clipboard</button>
+      </div>
+
+      <div class="editbox">
+        <div class="small muted">Live settings (read-only view)</div>
+        <pre id="edit_json" class="editjson">{}</pre>
+      </div>
+
+      <div class="small muted">
+        Pro tip: After you export JSON, you can paste it back to me and I’ll apply bigger design changes.
+      </div>
+    </div>
+  </aside>
+<script src="site_config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

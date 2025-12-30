@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaxIntegrity — Sources</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Home"><img class="brand__logo brand__logo--wide" src="logo.png" alt="TaxIntegrity logo" /></a>
+      </div>
+      <nav class="nav__links">
+        <a class="nav__link" href="audits.html">Tax Audits</a>
+        <a class="nav__link" href="evasion.html">Evasion</a>
+        <a class="nav__link" href="progress.html">Progress</a>
+        <a class="nav__link" href="sources.html">Sources</a>
+        <a class="nav__link nav__link--getstarted" href="get-started.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__top">
+      <h1>Sources</h1>
+      <p class="hero__tagline muted">Public references used for baseline facts. Demo metrics elsewhere are synthetic.</p>
+    </div>
+
+    <article class="panel" style="margin-top:14px;">
+      <div class="panel__header">
+        <h2>Primary public sources</h2>
+        <p class="muted">These references support the real-world baseline claims used on the Tax Audits, Evasion, and Progress pages.</p>
+      </div>
+
+      <div class="mock__list">
+        <div class="signal">
+          <div class="signal__t">IRS — Tax Gap (TY 2022 projections)</div>
+          <div class="signal__d">Gross tax gap estimate ($696B) and net tax gap projection ($606B), and breakdown components (underreporting).</div>
+        </div>
+
+        <div class="signal">
+          <div class="signal__t">IRS — Publications / SOI updates (Tax gap details)</div>
+          <div class="signal__d">Supporting documentation for the tax gap estimates and methodology (referenced on-site as “Publication 5869” where applicable).</div>
+        </div>
+
+        <div class="signal">
+          <div class="signal__t">GAO — AI and tax administration (public explanation)</div>
+          <div class="signal__d">Explains how AI may help IRS case selection, sampling, and identifying returns more likely to have errors/owe additional tax.</div>
+        </div>
+
+        <div class="signal">
+          <div class="signal__t">TIGTA — IRS AI governance / inventory (2024 evaluation)</div>
+          <div class="signal__d">Reports IRS inventory of AI projects and their implementation status.</div>
+        </div>
+
+        <div class="signal">
+          <div class="signal__t">IRS — Modernization / enforcement strategy updates (2024)</div>
+          <div class="signal__d">Mentions use of AI/advanced analytics to support selection of complex partnerships for audits and modernization initiatives.</div>
+        </div>
+      </div>
+
+      <div class="muted small" style="margin-top:10px;">
+        Note: This site is an educational prototype. It does not identify real taxpayers. Any real deployment would require legal review, privacy controls, audit logs, and human approval workflows.
+      </div>
+    </article>
+
+    <footer class="footer">
+      <div class="muted small">Educational prototype. Uses synthetic metrics for demos; baselines are from public sources.</div>
+    </footer>
+  </div>
+</section>
+
+<!-- In-page Edit Mode UI -->
+  <button id="edit_toggle" class="editfab" type="button" aria-label="Toggle edit mode" title="Toggle edit mode">
+    ✏️ Edit
+  </button>
+
+  <aside id="edit_drawer" class="editdrawer" aria-hidden="true">
+    <div class="editdrawer__header">
+      <div class="editdrawer__title">Edit Mode</div>
+      <button id="edit_close" class="editdrawer__close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="editdrawer__body">
+      <div class="edittip">
+        Click any text with a dotted underline to edit it.<br/>
+        Changes save in your browser (localStorage).
+      </div>
+
+      <div class="editrow">
+        <button id="edit_export" class="btn btn--primary" type="button">Export Settings (JSON)</button>
+        <label class="btn" style="cursor:pointer;">
+          Import Settings
+          <input id="edit_import" type="file" accept="application/json" style="display:none;">
+        </label>
+      </div>
+
+      <div class="editrow">
+        <button id="edit_reset" class="btn" type="button">Reset to Default</button>
+        <button id="edit_copy" class="btn" type="button">Copy Settings to Clipboard</button>
+      </div>
+
+      <div class="editbox">
+        <div class="small muted">Live settings (read-only view)</div>
+        <pre id="edit_json" class="editjson">{}</pre>
+      </div>
+
+      <div class="small muted">
+        Pro tip: After you export JSON, you can paste it back to me and I’ll apply bigger design changes.
+      </div>
+    </div>
+  </aside>
+<script src="site_config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
