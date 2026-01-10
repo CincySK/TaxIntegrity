@@ -1,0 +1,19 @@
+/* Minimal base styles.
+   Tailwind utilities are provided via the Tailwind Play CDN included in index.html. */
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #0f172a !important; /* Solid slate-900 background */
+}
+
+/* Ensure no transparency when embedded in iframe */
+#root {
+  background-color: #0f172a;
+}
+
+
+

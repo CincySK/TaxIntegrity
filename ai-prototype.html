@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaxIntegrity — AI Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Chat interface styles */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 200px);
+      max-height: 700px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(8,18,35,.55);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .chat-message {
+      padding: 12px 16px;
+      border-radius: 12px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    
+    .chat-message.user {
+      align-self: flex-end;
+      background: rgba(94,38,94,.25);
+      border: 1px solid rgba(94,38,94,.45);
+    }
+    
+    .chat-message.assistant {
+      align-self: flex-start;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    
+    .chat-input-container {
+      padding: 16px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      display: flex;
+      gap: 10px;
+      background: rgba(8,18,35,.75);
+    }
+    
+    .chat-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+    
+    .chat-input:focus {
+      outline: none;
+      border-color: rgba(94,38,94,.55);
+      box-shadow: 0 0 0 3px rgba(94,38,94,.15);
+    }
+    
+    .chat-send {
+      padding: 12px 24px;
+      background: rgba(94,38,94,.18);
+      border: 1px solid rgba(94,38,94,.60);
+      color: var(--text);
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    
+    .chat-send:hover:not(:disabled) {
+      filter: brightness(1.08);
+    }
+    
+    .chat-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.2);
+      border-top-color: var(--text);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .sources-info {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Home"><img class="brand__logo brand__logo--wide" src="logo.png" alt="TaxIntegrity logo" /></a>
+      </div>
+      <nav class="nav__links">
+        <a class="nav__link" href="audits.html">Tax Audits</a>
+        <a class="nav__link" href="evasion.html">Evasion</a>
+        <a class="nav__link" href="progress.html">Progress</a>
+        <a class="nav__link" href="sources.html">Sources</a>
+        <a class="nav__link" href="chat.html">RAG Chat</a>
+        <a class="nav__link" href="ai-prototype.html">AI Prototype</a>
+        <a class="nav__link nav__link--getstarted" href="get-started.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    
+<div class="hero__top">
+  <h1>AI Prototype</h1>
+  <p class="hero__tagline muted">Ask questions about using AI for tax evasion detection and speeding up audits. Powered by ChatGPT with sources from GAO and IRS documents.</p>
+</div>
+
+<div class="panel" style="margin-top:14px;">
+  <div class="panel__header">
+    <h2>Interactive AI Assistant</h2>
+    <p class="muted">
+      This prototype uses ChatGPT to answer questions about AI applications in tax enforcement, drawing directly from:
+      <b>"Artificial Intelligence May Help IRS Close the Tax Gap"</b> (U.S. GAO) and <b>IRS 2024</b> documents.
+    </p>
+  </div>
+  <div class="muted small" style="margin-top:10px;">
+    The AI searches through uploaded PDF documents to provide accurate, source-based answers about tax evasion detection and audit automation.
+  </div>
+</div>
+
+<div class="panel" style="margin-top:14px;">
+  <div class="chat-container">
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-message assistant">
+        <div>Hello! I'm here to help answer questions about using AI for tax evasion detection and speeding up audits. I can search through GAO and IRS documents to provide accurate information.</div>
+        <div class="sources-info">Try asking: "How can AI help speed up tax audits?" or "What are the benefits of using AI for tax evasion detection?"</div>
+      </div>
+    </div>
+    <div class="chat-input-container">
+      <input 
+        type="text" 
+        class="chat-input" 
+        id="chatInput" 
+        placeholder="Ask a question about AI and tax enforcement..."
+        autocomplete="off"
+      />
+      <button class="chat-send" id="chatSend">Send</button>
+    </div>
+  </div>
+</div>
+
+    <footer class="footer" style="margin-top:14px;">
+      <div class="muted small">
+        Educational prototype. Answers are generated by ChatGPT based on the provided source documents. For production use, additional validation and human review would be required.
+      </div>
+      <div class="muted small">
+        Make sure the Flask server is running (python server.py) to use this feature.
+      </div>
+    </footer>
+  </div>
+</section>
+
+<script>
+(function() {
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  
+  // API endpoint - adjust if your server runs on a different port
+  const API_URL = 'http://localhost:5000/api/query';
+  
+  function addMessage(text, isUser) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${isUser ? 'user' : 'assistant'}`;
+    messageDiv.innerHTML = `<div>${escapeHtml(text)}</div>`;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+  
+  function addLoadingMessage() {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'chat-message assistant';
+    messageDiv.id = 'loadingMessage';
+    messageDiv.innerHTML = '<div class="loading"></div>';
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return messageDiv;
+  }
+  
+  function removeLoadingMessage() {
+    const loading = document.getElementById('loadingMessage');
+    if (loading) loading.remove();
+  }
+  
+  async function sendMessage() {
+    const query = chatInput.value.trim();
+    if (!query) return;
+    
+    // Disable input and button
+    chatInput.disabled = true;
+    chatSend.disabled = true;
+    
+    // Add user message
+    addMessage(query, true);
+    chatInput.value = '';
+    
+    // Add loading indicator
+    addLoadingMessage();
+    
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: query })
+      });
+      
+      removeLoadingMessage();
+      
+      if (!response.ok) {
+        const error = await response.json();
+        addMessage(`Error: ${error.error || 'Failed to get response'}. Make sure the Flask server is running.`, false);
+        return;
+      }
+      
+      const data = await response.json();
+      let answerText = data.answer || 'No answer received.';
+      
+      if (data.sources_used) {
+        answerText += `<div class="sources-info" style="margin-top:8px;">Based on ${data.sources_used} source${data.sources_used !== 1 ? 's' : ''} from the document library.</div>`;
+      }
+      
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'chat-message assistant';
+      messageDiv.innerHTML = `<div>${answerText}</div>`;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      
+    } catch (error) {
+      removeLoadingMessage();
+      addMessage(`Error connecting to server: ${error.message}. Make sure the Flask server is running on port 5000.`, false);
+    } finally {
+      // Re-enable input and button
+      chatInput.disabled = false;
+      chatSend.disabled = false;
+      chatInput.focus();
+    }
+  }
+  
+  // Send on button click
+  chatSend.addEventListener('click', sendMessage);
+  
+  // Send on Enter key
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+  
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
+  // Focus input on load
+  chatInput.focus();
+})();
+</script>
+
+<script src="site_config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+
+

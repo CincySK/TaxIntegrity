@@ -1,0 +1,8 @@
+
+{
+  "name": "TaxIntegrity AI",
+  "description": "A sophisticated RAG-based AI platform designed to detect tax evasion patterns and provide integrity-focused financial guidance using Gemini 3.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

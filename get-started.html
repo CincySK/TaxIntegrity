@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaxIntegrity — Get Started</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Home"><img class="brand__logo brand__logo--wide" src="logo.png" alt="TaxIntegrity logo" /></a>
+      </div>
+      <nav class="nav__links">
+        <a class="nav__link" href="audits.html">Tax Audits</a>
+        <a class="nav__link" href="evasion.html">Evasion</a>
+        <a class="nav__link" href="progress.html">Progress</a>
+        <a class="nav__link" href="sources.html">Sources</a>
+        <a class="nav__link" href="chat.html">RAG Chat</a>
+        <a class="nav__link" href="ai-prototype.html">AI Prototype</a>
+        <a class="nav__link nav__link--getstarted" href="get-started.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    
+<div class="hero__top">
+  <h1>Get Started</h1>
+  <p class="hero__tagline muted">Run a demo simulation and export a report (uses real public baselines + synthetic projections).</p>
+</div>
+
+<div class="panel" style="margin-top:14px;">
+  <div class="panel__header">
+    <h2>How the demo simulation works</h2>
+    <p class="muted">
+      This simulator uses a real public baseline for the 2022 tax gap and then applies a synthetic “AI adoption” model to show
+      how improved triage and detection could change recovered revenue and audit efficiency. The numbers are illustrative—not official forecasts.
+    </p>
+  </div>
+  <div class="muted small">
+    Baseline sources: IRS tax gap projection for TY 2022 ($696B gross) and IRS SOI net tax gap projection for TY 2022 ($606B).
+  </div>
+</div>
+
+
+<div class="panel" style="margin-top:14px;">
+  <div class="panel__header">
+    <h2>Impact Simulator</h2>
+    <p class="muted">Adjust AI adoption level and generate an illustrative “Treasury impact” style output (demo only).</p>
+  </div>
+
+  <div class="actionrow" id="get-started">
+    <button class="btn btn--primary" data-action="simulate" type="button">Run Impact Simulation</button>
+    <button class="btn" data-action="export" type="button">Export Demo Report (JSON)</button>
+
+    <div class="slider">
+      <div class="slider__label">AI adoption level</div>
+      <input id="adoption" type="range" min="0" max="100" value="35" />
+      <div class="slider__value" id="adoption_val">35</div>
+    </div>
+  </div>
+
+  <div class="result" id="result">
+    <div class="result__title">Simulation Output</div>
+
+    <div id="sim_cards" class="simcards">
+      <div class="muted">Click “Run Impact Simulation” to see results.</div>
+    </div>
+
+    <div class="simtoggle">
+      <button class="btn" id="toggle_json" type="button" aria-expanded="false">Show technical JSON</button>
+      <button class="btn" id="copy_json" type="button">Copy JSON</button>
+    </div>
+
+    <pre class="result__box simjson is-hidden" id="result_box" aria-hidden="true"></pre>
+  </div>
+<pre class="result__box" id="result_box">Click “Run Impact Simulation”.</pre>
+  </div>
+
+  <div style="margin-top:14px; display:flex; justify-content:center;">
+    <a class="btn btn--primary btn--cta-mega" href="javascript:void(0)" role="button" aria-label="View Plans">View Plans</a>
+  </div>
+
+  <div class="muted small" style="margin-top:10px;">
+    Note: This prototype does not use real taxpayer identities. Any real deployment would require legal review, privacy protections, and human approval workflows.
+  </div>
+</div>
+
+    <footer class="footer">
+      <div class="muted small">
+        Educational prototype. Uses synthetic metrics. For real deployments: privacy controls, access logs, and human review.
+      </div>
+      <div class="muted small">
+        Edit-friendly build: click ✏️ Edit to change labeled text (saved locally in your browser).
+      </div>
+    </footer>
+  </div>
+</section>
+
+<!-- In-page Edit Mode UI -->
+  <button id="edit_toggle" class="editfab" type="button" aria-label="Toggle edit mode" title="Toggle edit mode">
+    ✏️ Edit
+  </button>
+
+  <aside id="edit_drawer" class="editdrawer" aria-hidden="true">
+    <div class="editdrawer__header">
+      <div class="editdrawer__title">Edit Mode</div>
+      <button id="edit_close" class="editdrawer__close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="editdrawer__body">
+      <div class="edittip">
+        Click any text with a dotted underline to edit it.<br/>
+        Changes save in your browser (localStorage).
+      </div>
+
+      <div class="editrow">
+        <button id="edit_export" class="btn btn--primary" type="button">Export Settings (JSON)</button>
+        <label class="btn" style="cursor:pointer;">
+          Import Settings
+          <input id="edit_import" type="file" accept="application/json" style="display:none;">
+        </label>
+      </div>
+
+      <div class="editrow">
+        <button id="edit_reset" class="btn" type="button">Reset to Default</button>
+        <button id="edit_copy" class="btn" type="button">Copy Settings to Clipboard</button>
+      </div>
+
+      <div class="editbox">
+        <div class="small muted">Live settings (read-only view)</div>
+        <pre id="edit_json" class="editjson">{}</pre>
+      </div>
+
+      <div class="small muted">
+        Pro tip: After you export JSON, you can paste it back to me and I’ll apply bigger design changes.
+      </div>
+    </div>
+  </aside>
+<script src="site_config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

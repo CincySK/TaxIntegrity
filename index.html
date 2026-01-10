@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaxIntegrity</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Home"><img class="brand__logo brand__logo--wide" src="logo.png" alt="TaxIntegrity logo" /></a>
+      </div>
+      <nav class="nav__links">
+        <a class="nav__link" href="audits.html">Tax Audits</a>
+        <a class="nav__link" href="evasion.html">Evasion</a>
+        <a class="nav__link" href="progress.html">Progress</a>
+        <a class="nav__link" href="sources.html">Sources</a>
+        <a class="nav__link" href="chat.html">RAG Chat</a>
+        <a class="nav__link" href="ai-prototype.html">AI Prototype</a>
+        <a class="nav__link nav__link--getstarted" href="get-started.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    
+<div class="hero__top">
+        <h1 data-edit="site.title">TaxIntegrity</h1>
+        <p class="hero__tagline" data-edit="site.tagline">
+          AI Solutions for Smarter Tax Audits &amp; Evasion Detection
+        </p>
+      </div>
+
+<div class="panel" style="margin-top:14px;">
+  <div class="panel__header">
+    <h2>What’s real vs. what’s demo?</h2>
+    <p class="muted">
+      This prototype uses <b>synthetic case data</b> for safety, but it references <b>real public research</b> for baseline facts like the size of the U.S. tax gap
+      and public reporting about IRS AI projects.
+    </p>
+  </div>
+  <div class="muted small">
+    Key sources used in this site: IRS Tax Gap (TY 2022 projection), IRS Publication 5869, GAO blog on IRS AI, and TIGTA’s 2024 AI governance evaluation.
+  </div>
+</div>
+
+<div class="panel" style="margin-top:14px;">
+  <div class="panel__header">
+    <h2>Executive Summary</h2>
+    <p class="muted">TaxIntegrity is a responsible-AI prototype that supports fair, lawful tax compliance through better audit triage and explainable risk signals (demo data).</p>
+  </div>
+  <div class="chiprow" role="group" aria-label="Quick links">
+    <a class="chip" href="audits.html" style="text-decoration:none; display:inline-flex; align-items:center;">Go to Tax Audits →</a>
+    <a class="chip" href="evasion.html" style="text-decoration:none; display:inline-flex; align-items:center;">Go to Evasion →</a>
+    <a class="chip" href="progress.html" style="text-decoration:none; display:inline-flex; align-items:center;">Go to Progress →</a>
+    <a class="chip" href="get-started.html" style="text-decoration:none; display:inline-flex; align-items:center;">Go to Simulator →</a>
+  </div>
+
+  <div class="progress__grid" style="margin-top:8px;">
+    <div class="progresscard">
+      <div class="progresscard__label">Human-in-the-loop</div>
+      <div class="muted small">AI recommends; trained staff decide. Every flag is reviewable.</div>
+    </div>
+    <div class="progresscard">
+      <div class="progresscard__label">Explainable signals</div>
+      <div class="muted small">Clear drivers behind risk scores to support due process.</div>
+    </div>
+    <div class="progresscard">
+      <div class="progresscard__label">Synthetic demo data</div>
+      <div class="muted small">No real taxpayer identities. This is safe for public demos.</div>
+    </div>
+  </div>
+</div>
+
+    <footer class="footer">
+      <div class="muted small">
+        Educational prototype. Uses synthetic metrics. For real deployments: privacy controls, access logs, and human review.
+      </div>
+      <div class="muted small">
+        Edit-friendly build: click ✏️ Edit to change labeled text (saved locally in your browser).
+      </div>
+    </footer>
+  </div>
+</section>
+
+<!-- In-page Edit Mode UI -->
+  <button id="edit_toggle" class="editfab" type="button" aria-label="Toggle edit mode" title="Toggle edit mode">
+    ✏️ Edit
+  </button>
+
+  <aside id="edit_drawer" class="editdrawer" aria-hidden="true">
+    <div class="editdrawer__header">
+      <div class="editdrawer__title">Edit Mode</div>
+      <button id="edit_close" class="editdrawer__close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="editdrawer__body">
+      <div class="edittip">
+        Click any text with a dotted underline to edit it.<br/>
+        Changes save in your browser (localStorage).
+      </div>
+
+      <div class="editrow">
+        <button id="edit_export" class="btn btn--primary" type="button">Export Settings (JSON)</button>
+        <label class="btn" style="cursor:pointer;">
+          Import Settings
+          <input id="edit_import" type="file" accept="application/json" style="display:none;">
+        </label>
+      </div>
+
+      <div class="editrow">
+        <button id="edit_reset" class="btn" type="button">Reset to Default</button>
+        <button id="edit_copy" class="btn" type="button">Copy Settings to Clipboard</button>
+      </div>
+
+      <div class="editbox">
+        <div class="small muted">Live settings (read-only view)</div>
+        <pre id="edit_json" class="editjson">{}</pre>
+      </div>
+
+      <div class="small muted">
+        Pro tip: After you export JSON, you can paste it back to me and I’ll apply bigger design changes.
+      </div>
+    </div>
+  </aside>
+<script src="site_config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

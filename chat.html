@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAG Chat — TaxIntegrity</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Chat page specific styles */
+    .chat-container {
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 140px);
+      margin-top: 0;
+    }
+    
+    .chat-iframe {
+      width: 100%;
+      height: calc(100vh - 140px);
+      border: none;
+      border-radius: 0;
+    }
+    
+    .chat-intro {
+      text-align: center;
+      padding: 22px 22px 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .chat-intro h1 {
+      font-size: 32px;
+      margin: 0 0 10px;
+      text-shadow: 0 10px 28px rgba(0,0,0,.45);
+    }
+    
+    .chat-intro p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0;
+    }
+    
+    .chat-frame-wrapper {
+      padding: 0 22px 22px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .chat-frame-container {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-top: 16px;
+    }
+    
+    .chat-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 22px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    @media(max-width: 768px) {
+      .chat-features {
+        grid-template-columns: 1fr;
+      }
+      .chat-iframe {
+        height: calc(100vh - 200px);
+      }
+    }
+    
+    .chat-feature {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,.02);
+      text-align: center;
+    }
+    
+    .chat-feature__icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .chat-feature__title {
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    
+    .chat-feature__desc {
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Home"><img class="brand__logo brand__logo--wide" src="logo.png" alt="TaxIntegrity logo" /></a>
+      </div>
+      <nav class="nav__links">
+        <a class="nav__link" href="audits.html">Tax Audits</a>
+        <a class="nav__link" href="evasion.html">Evasion</a>
+        <a class="nav__link" href="progress.html">Progress</a>
+        <a class="nav__link" href="sources.html">Sources</a>
+        <a class="nav__link is-active" href="chat.html">RAG Chat</a>
+        <a class="nav__link" href="ai-prototype.html">AI Prototype</a>
+        <a class="nav__link nav__link--getstarted" href="get-started.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true"></div>
+    
+    <div class="chat-intro">
+      <h1>🔍 AI-Powered Tax Fraud Detection</h1>
+      <p>
+        Ask questions about tax compliance using our Gemini-powered RAG system. 
+        All responses are grounded in verified GAO reports and official IRS documentation.
+      </p>
+    </div>
+    
+    <div class="chat-features">
+      <div class="chat-feature">
+        <div class="chat-feature__icon">📊</div>
+        <div class="chat-feature__title">Verified Sources</div>
+        <div class="chat-feature__desc">Responses based exclusively on GAO reports and official IRS data</div>
+      </div>
+      <div class="chat-feature">
+        <div class="chat-feature__icon">🔒</div>
+        <div class="chat-feature__title">Closed-World RAG</div>
+        <div class="chat-feature__desc">AI cannot hallucinate outside verified document context</div>
+      </div>
+      <div class="chat-feature">
+        <div class="chat-feature__icon">⚡</div>
+        <div class="chat-feature__title">High Precision</div>
+        <div class="chat-feature__desc">Temperature set to 0.1 for maximum factual accuracy</div>
+      </div>
+    </div>
+    
+    <div class="chat-frame-wrapper">
+      <div class="chat-frame-container">
+        <iframe 
+          class="chat-iframe" 
+          src="/taxintegrity-ai/" 
+          title="TaxIntegrity RAG Chat Interface"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+    
+    <footer class="footer" style="padding: 22px; max-width: 1200px; margin: 0 auto;">
+      <div class="muted small">
+        Educational prototype. The RAG system uses verified GAO reports only. For production: implement proper API key security and access controls.
+      </div>
+    </footer>
+  </section>
+
+<script src="site_config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+
